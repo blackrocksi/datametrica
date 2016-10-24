@@ -1,1 +1,1 @@
-# Repositório dos projetos da Datametrica.
+# Repositório dos projetos da Datametrica
