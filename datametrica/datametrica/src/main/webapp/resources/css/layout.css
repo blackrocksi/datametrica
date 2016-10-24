@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana,
+		sans-serif, FontAwesome;
+	font-size: 12px;
+	margin: 0;
+	background-color: #575757 !important;
+}
+
+.layout-no-border {
+	border: none !important;
+}
+
+.layout-white-gradient {
+	background: -webkit-linear-gradient(#575757, #ececec) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	height: 70px;
+}
+
+.panelGrid-outputText-align-center {
+		text-align: center !important;
+}
+
+.panelGridNoBorder tr,.panelGridNoBorder td {
+	border: none !important;
+}
+
+.dataTableHeaderBlue th {
+	background: #0099e0 !important;
+}
+
+.bold {
+	font-weight:bold;
+	font-size: 18px; 
+}
+
+/* Workarround do OverlayPanel com position incorreto */
+.overlayDiv {
+	left: 0;
+	/* position: fixed;  NUNCA COLOCAR ESSA PROPRIEDADE, GERA BUG NO CHROME */
+	top: 0;
+}

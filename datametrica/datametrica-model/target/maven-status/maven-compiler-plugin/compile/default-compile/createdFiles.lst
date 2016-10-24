@@ -1,0 +1,5 @@
+br\com\datametrica\net\model\DoneByAgent$Ordenator.class
+br\com\datametrica\net\utils\ConsultaBanco.class
+br\com\datametrica\net\model\DoneByAgent.class
+br\com\datametrica\net\model\DoneUnder60Seconds.class
+br\com\datametrica\net\utils\BeanCreatorUtils.class

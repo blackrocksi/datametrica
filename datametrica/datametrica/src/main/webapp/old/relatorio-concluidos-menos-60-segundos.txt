@@ -1,0 +1,118 @@
+<%@ page contentType="text/html" language="java" import="java.sql.*"%>
+<%@ page contentType="text/html" language="java" import="java.util.*"%>
+<%@ page contentType="text/html" language="java"
+	import="br.com.datametrica.net.controller.Resultado"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>Report</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+
+	<div align="center">
+		<img alt="" src="/datametrica-report/images/logos.png">
+	</div>
+
+	<div align="center">
+		<h1>
+			<strong>Relatório de atividades Concluídas em menos de 60 segundos - Celula VT</strong>
+		</h1>
+	</div>
+
+	<input type="button" name="another" value="Concluídos x Agente"
+		onclick="location.href='http://10.48.200.97:8080/datametrica-report/relatorio-concluidos-x-agente.jsp';">
+
+	<p>Este relatório apresenta a quantidade de Chamados Concluídos por
+		Agente em menos de 60 segundos, do dia.</p>
+	<p>
+		<strong>OBS:</strong> Os chamados classificados em menos de 60
+		segundos voltam para fila, podendo haver repetições.
+	</p>
+	<p>Importante ressaltar que as informações apresentadas neste
+		relatório estão relacionadas a tabulação dos colaboradores da célula
+		VT na aplicação Interaction Workspace (Genesys).</p>
+	<table>
+		<table border=1 cellspacing=0 cellpadding=0>
+			<p>
+				<!-- <input type="button" name="voltar" value="voltar"
+					onClick="history.go(-1)"> -->
+			</p>
+
+			<tr
+				style="background-color: #3399FF; color: #FFFFFF; text-align: center;">
+				<td width=380 height=25><strong> SUPERVISOR </strong></td>
+				<td width=380 height=25><strong> NOME/SOBRENOME AGENTE </strong></td>
+				<td width=150 height=25><strong> MATRICULA</strong></td>
+				<td width=150 height=25><strong> QUANTIDADE </strong></td>
+
+			</tr>
+
+			<%
+				try {
+
+					Connection con;
+					Statement stm;
+					ResultSet rs = null;
+					String sql = null;
+
+					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+					con = DriverManager.getConnection("jdbc:sqlserver://10.48.200.97;database=master", "genesys", "genesys@2015");
+					stm = con.createStatement();
+					sql = "SELECT g.name as 'supervisor', p.first_name + ' ' + p.last_name as 'nome_agente',"
+							+" r.agente as matricula, COUNT(*) as quantidade"
+							+" FROM report_estrategia.dbo.rel_tickets_menos_60seg r"
+							+" inner join gencfg.dbo.cfg_person p on p.user_name = r.agente"
+							+" inner join gencfg.dbo.cfg_agent_group ag on ag.agent_dbid = p.dbid"
+							+" inner join gencfg.dbo.cfg_group g on g.dbid = ag.group_dbid"
+							+" where g.name != '1 - Geral VT' "
+							+" AND g.name NOT LIKE '%Outage%' "
+							+" AND g.name != 'Pequenas Cidades'" 
+							+" AND CAST(r.inicioAtendimento AS DATE) = CAST(GETDATE() AS DATE)"
+							+" group by g.name, p.first_name, p.last_name, r.agente order by 4 desc;";
+
+					rs = stm.executeQuery(sql);
+
+					while (rs.next()) {
+			%>
+
+			<tr>
+				<td width=400 height=38>
+					<%
+						out.print(rs.getString("supervisor"));
+					%>
+				</td>
+				<td width=400 height=38>
+					<%
+						out.print(rs.getString("nome_agente"));
+					%>
+				</td>
+				<td width=150 height=38>
+					<%
+						out.print(rs.getString("matricula"));
+					%>
+				</td>
+				<td width=150 height=38>
+					<%
+						out.print(rs.getString("quantidade"));
+					%>
+				</td>
+			</tr>
+
+			<%
+				}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			%>
+
+		</table>
+	</table>
+
+</body>
+</html>
+
+

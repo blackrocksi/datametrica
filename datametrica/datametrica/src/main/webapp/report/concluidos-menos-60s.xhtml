@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cc="http://java.sun.com/jsf/composite/componentes"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+	<center>
+		<h:outputText
+			value="RELATÓRIO DE ATIVIDADES CONCLUÍDAS EM MENOS DE 60 SEGUNDOS - CÉLULA VT"
+			styleClass="bold" />
+	</center>
+
+	<p:spacer height="10" />
+
+	<p:panelGrid columns="1" styleClass="panelGridNoBorder">
+
+		<h:outputText
+			value="Este relatório apresenta a quantidade de Chamados Concluídos por
+		Agente em menos de 60 segundos, do dia." />
+
+		<h:outputText
+			value="OBS: Importante ressaltar que as informações apresentadas neste
+		relatório estão relacionadas a tabulação dos colaboradores da célula
+		VT na aplicação Interaction Workspace (Genesys)." />
+
+	</p:panelGrid>
+
+	<center style="text-align: -webkit-right;">
+		<h:commandLink>
+			<h:outputText value="Exportar: " />
+			<p:graphicImage library="images" name="excel.png" width="30" style="vertical-align: middle;" />
+			<p:dataExporter type="xls" target="dtbDoneUnder60Seconds" fileName="concluidos-ate-60-segundos" />
+		</h:commandLink>
+	</center>
+
+	<p:spacer height="10" />
+
+	<p:dataTable styleClass="dataTableHeaderBlue" var="doneUnder60Seconds"
+		value="#{doneUnderSixtySecondsController.doneUnder60SecondsList}"
+		paginator="true"
+		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="5,10,15" rows="10" paginatorPosition="bottom"
+		id="dtbDoneUnder60Seconds" emptyMessage=""
+		currentPageReportTemplate="( {currentPage} de {totalPages} )">
+		<p:column headerText="Supervisor">
+			<h:outputText value="#{doneUnder60Seconds.supervisorName}" />
+		</p:column>
+		<p:column headerText="Nome do Agente" width="400">
+			<h:outputText value="#{doneUnder60Seconds.agentName}" />
+		</p:column>
+		<p:column headerText="Matricula">
+			<h:outputText value="#{doneUnder60Seconds.agentCode}" />
+		</p:column>
+		<p:column headerText="Quantidade">
+			<h:outputText value="#{doneUnder60Seconds.total}" />
+		</p:column>
+	</p:dataTable>
+
+</ui:composition>

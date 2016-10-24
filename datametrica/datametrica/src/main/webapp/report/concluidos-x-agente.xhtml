@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cc="http://java.sun.com/jsf/composite/componentes"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<center>
+		<h:outputText value="RELATÓRIO DE ATIVIDADES CONCLUÍDAS - CÉLULA VT"
+			styleClass="bold" />
+	</center>
+
+	<p:spacer height="10" />
+
+	<p:panelGrid columns="1" styleClass="panelGridNoBorder">
+
+		<h:outputText
+			value="Este relatório apresenta a quantidade consolidada de Chamados
+		tratados por Agente com o status 'Concluído' do dia." />
+
+		<h:outputText
+			value="OBS: Os chamados classificados como PV1, PV3 e Modem
+		Off voltam para fila, por esse motivo não estão constando neste
+		relatório.Importante ressaltar que as informações apresentadas neste
+		relatório estão relacionadas a tabulação dos colaboradores da célula
+		VT na aplicação Interaction Workspace (Genesys)." />
+
+	</p:panelGrid>
+
+	<center style="text-align: -webkit-right;">
+		<h:commandLink>
+			<h:outputText value="Exportar: " />
+			<p:graphicImage library="images" name="excel.png" width="30"
+				style="vertical-align: middle;" />
+			<p:dataExporter type="xls" target="dtbDoneByAgent"
+				fileName="concluidos-x-agentes" />
+		</h:commandLink>
+	</center>
+
+	<p:spacer height="10" />
+
+	<p:dataTable styleClass="dataTableHeaderBlue" var="doneByAgent"
+		value="#{doneByAgentController.doneByAgentList}" paginator="true"
+		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="5,10,15" rows="10" paginatorPosition="bottom"
+		id="dtbDoneByAgent" emptyMessage=""
+		currentPageReportTemplate="( {currentPage} de {totalPages} )">
+
+		<p:column headerText="Supervisor" width="400"
+			filterBy="#{doneByAgent.supervisorName}">
+			<h:outputText value="#{doneByAgent.supervisorName}" />
+		</p:column>
+		<p:column headerText="Matricula">
+			<h:outputText value="#{doneByAgent.agentCode}" />
+		</p:column>
+		<p:column headerText="Nome do Agente" width="400">
+			<h:outputText
+				value="#{doneByAgent.agentName} #{doneByAgent.agentLastName}" />
+		</p:column>
+		<p:column headerText="PV1">
+			<h:outputText value="#{doneByAgent.pv1}" />
+		</p:column>
+		<p:column headerText="PV2">
+			<h:outputText value="#{doneByAgent.pv2}" />
+		</p:column>
+		<p:column headerText="PV3">
+			<h:outputText value="#{doneByAgent.pv3}" />
+		</p:column>
+		<p:column headerText="Cancelado">
+			<h:outputText value="#{doneByAgent.canceled}" />
+		</p:column>
+		<p:column headerText="Total">
+			<h:outputText value="#{doneByAgent.total}" />
+		</p:column>
+
+	</p:dataTable>
+
+
+</ui:composition>

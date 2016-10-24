@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>datametrica-relatorios</groupId>
+		<artifactId>datametrica-relatorios</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<groupId>datametrica</groupId>
+	<artifactId>datametrica</artifactId>
+	<packaging>war</packaging>
+
+	<developers>
+		<developer>
+			<id>mv</id>
+			<name>Marcio Veloso</name>
+			<email>marcio.veloso@blackrocksi.com</email>
+		</developer>
+	</developers>
+
+	<dependencies>
+	
+		<!-- JSF WEB KIT -->
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.2.12</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.2.12</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- PRIMEFACES -->
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.3</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.8</version>
+			<type>pom</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- SERVLET API -->
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- DATABASE -->
+
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc4</artifactId>
+			<version>4.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>datametrica-relatorios</groupId>
+			<artifactId>datametrica-model</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
+
+	<!-- Configurações de Build -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<path>/reports</path>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>com.microsoft.sqlserver:sqljdbc4</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<configuration>
+							<groupId>com.microsoft.sqlserver</groupId>
+							<artifactId>sqljdbc4</artifactId>
+							<version>4.0</version>
+							<packaging>jar</packaging>
+							<file>${project.basedir}/src/main/resources/lib/sqljdbc4.jar</file>
+							<createChecksum>true</createChecksum>
+							<generatePom>true</generatePom>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

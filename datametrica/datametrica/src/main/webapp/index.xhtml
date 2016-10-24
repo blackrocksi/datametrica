@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/templates/template.xhtml">
+	
+	<ui:define name="content">
+		<h:form id="formHome" styleClass="body">
+			<p:tabView >
+				<p:tab title="Concluídos x Agente" styleClass="layout-no-border" >
+					<ui:include src="/report/concluidos-x-agente.xhtml" />
+				</p:tab>
+				<p:tab title="Concluídos Menos 60s">
+					<ui:include src="/report/concluidos-menos-60s.xhtml" />
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

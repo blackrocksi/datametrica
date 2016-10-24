@@ -1,0 +1,163 @@
+<%@ page contentType="text/html" language="java" import="java.sql.*"%>
+<%@ page contentType="text/html" language="java" import="java.util.*"%>
+<%@ page contentType="text/html" language="java"
+	import="br.com.datametrica.net.controller.Resultado"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>Report</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+
+	<div align="center">
+		<img alt="" src="/datametrica-report/images/logos.png">
+	</div>
+
+	<div align="center">
+		<h1>
+			<strong>Relatório de atividades Concluídas - Célula VT</strong>
+		</h1>
+	</div>
+
+	<input type="button" name="another" value="Concluídos até 60s"
+		onclick="location.href='http://10.48.200.97:8080/datametrica-report/relatorio-concluidos-menos-60-segundos.jsp';">
+
+	<p>Este relatório apresenta a quantidade consolidada de Chamados
+		tratados por Agente com o status "Concluído" do dia.</p>
+	<p>
+		<strong>OBS:</strong> Os chamados classificados como PV1, PV3 e Modem
+		Off voltam para fila, por esse motivo não estão constando neste
+		relatório.
+	</p>
+	<p>Importante ressaltar que as informações apresentadas neste
+		relatório estão relacionadas a tabulação dos colaboradores da célula
+		VT na aplicação Interaction Workspace (Genesys).</p>
+	<table>
+		<table border=1 cellspacing=0 cellpadding=0>
+
+			<tr
+				style="background-color: #3399FF; color: #FFFFFF; text-align: center;">
+				<td width=280 height=25><strong> SUPERVISOR </strong></td>
+				<td width=280 height=25><strong> NOME/SOBRENOME AGENTE
+				</strong></td>
+				<td width=150 height=25><strong> PV1 EXIGE VISITA</strong></td>
+				<td width=150 height=25><strong> PV2 </strong></td>
+				<td width=150 height=25><strong> CANCELADO </strong></td>
+				<td width=150 height=25><strong> TOTAL </strong></td>
+
+			</tr>
+
+			<%
+				try {
+
+					Connection con;
+					Statement stm;
+					ResultSet rs = null;
+					String sql = null;
+
+					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+					con = DriverManager.getConnection("jdbc:sqlserver://10.48.200.97;database=master", "genesys", "genesys@2015");
+					stm = con.createStatement();
+					sql = "select g.name as 'supervisor'," + " p.first_name as 'nome_agente', p.last_name as 'sobrenome_agente'," + " i.DispositionCode 'tipificação'" + " from genixn.dbo.interactions i "
+						+ " inner join gencfg.dbo.cfg_person p on p.[user_name]=i.assigned_to" + " inner join gencfg.dbo.cfg_agent_group ag on ag.agent_dbid = p.dbid"
+						+ " inner join gencfg.dbo.cfg_group g on g.dbid = ag.group_dbid" + " where i.queue = 'iWD_Completed' AND" + " g.name != '1 - Geral VT' AND" + " g.name NOT LIKE '%Outage%' AND"
+						+ " g.name != 'Pequenas Cidades' AND" + " CAST(i.assigned_at AS DATE) = CAST(GETDATE() AS DATE);";
+
+					rs = stm.executeQuery(sql);
+					List<Resultado> queryResultTest = new ArrayList<Resultado>();
+					List<Resultado> consolidadoPorAgente = new ArrayList<Resultado>();
+
+					while (rs.next()) {
+						queryResultTest.add(new Resultado(rs.getString("supervisor"), rs.getString("nome_agente"), rs.getString("sobrenome_agente"), rs.getString("tipificação")));
+					}
+
+					for (Resultado resultado : queryResultTest) {
+
+						Resultado consolida = new Resultado();
+						Resultado porAgente = new Resultado();
+
+						if (consolidadoPorAgente.isEmpty()) {
+							consolida.setSupervisor(resultado.getSupervisor());
+							consolida.setNomeAgente(resultado.getNomeAgente());
+							consolida.setSobrenomeAgente(resultado.getSobrenomeAgente());
+						} else {
+							for (Resultado porAgenteTmp : consolidadoPorAgente) {
+								if (consolidadoPorAgente.isEmpty()) {
+									consolida.setSupervisor(resultado.getSupervisor());
+									consolida.setNomeAgente(resultado.getNomeAgente());
+									consolida.setSobrenomeAgente(resultado.getSobrenomeAgente());
+								} else if (porAgenteTmp.getSobrenomeAgente().equals(resultado.getSobrenomeAgente()) && porAgenteTmp.getNomeAgente().equals(resultado.getNomeAgente())) {
+									porAgente = porAgenteTmp;
+									consolida = porAgente;
+								} else {
+									consolida.setSupervisor(resultado.getSupervisor());
+									consolida.setNomeAgente(resultado.getNomeAgente());
+									consolida.setSobrenomeAgente(resultado.getSobrenomeAgente());
+								}
+							}
+						}
+
+						consolidadoPorAgente.remove(porAgente);
+						consolida.somaTipificacao(resultado.getTipificacao());
+						consolida.totalizaTipificacao();
+						consolidadoPorAgente.add(consolida);
+
+						Collections.sort(consolidadoPorAgente, new Resultado().new OrdenadorResultado());
+						Collections.sort(consolidadoPorAgente, new Resultado().new OrdenadorResultado());
+
+					}
+
+					for (Resultado resultado : consolidadoPorAgente) {
+			%>
+
+			<tr>
+				<td width=280 height=38>
+					<%
+						out.print(resultado.getSupervisor());
+					%>
+				</td>
+				<td width=280 height=38>
+					<%
+						out.print(resultado.getNomeAgente() + " " + resultado.getSobrenomeAgente());
+					%>
+				</td>
+				<td width=150 height=38>
+					<%
+						out.print(resultado.getTotalPv1_());
+					%>
+				</td>
+				<td width=150 height=38>
+					<%
+						out.print(resultado.getTotalPv2());
+					%>
+				</td>
+				<td width=150 height=38>
+					<%
+						out.print(resultado.getTotalCancelado());
+					%>
+				</td>
+				<td width=150 height=38>
+					<%
+						out.print(resultado.getTotal());
+					%>
+				</td>
+			</tr>
+
+			<%
+				}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			%>
+
+		</table>
+	</table>
+
+</body>
+</html>
+
+

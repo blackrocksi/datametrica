@@ -1,0 +1,136 @@
+package br.com.datametrica.net.utils;
+
+import br.com.datametrica.net.model.DoneByAgent;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BeanCreatorUtils {
+	public static List<DoneByAgent> createResultadoList() {
+		List<DoneByAgent> queryResultTest = new ArrayList<DoneByAgent>();
+
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV1"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Neto", "Zabumba", "MODEM OFF"));
+
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV1"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcio", "T1", "Leandro", "Zabumba", "CANCELADO"));
+
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV1"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Marcos", "T1", "Marcos", "Zabumba", "MODEM OFF"));
+
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV1"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV2"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV3"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "CANCELADO"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "MODEM OFF"));
+		queryResultTest.add(new DoneByAgent("Zabumba", "T1", "Mane", "Zabumba", "PV1_CLIENTE_EXIGE_VISITA"));
+
+		return queryResultTest;
+	}
+}

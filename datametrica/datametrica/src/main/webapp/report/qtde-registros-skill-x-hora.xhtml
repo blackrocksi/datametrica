@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cc="http://java.sun.com/jsf/composite/componentes"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<center>
+		<h:outputText value="RELATÓRIO DE QUANTIDADE DE REGISTROS POR SKIL x HORA"
+			styleClass="bold" />
+	</center>
+
+	<p:spacer height="10" />
+
+	<p:panelGrid columns="1" styleClass="panelGridNoBorder">
+		<h:outputText
+			value="Este relatório apresenta a quantidade consolidada de Chamados
+		Entrantes x Atendidos por Skill por Intervalo" />
+	</p:panelGrid>
+
+	<center style="text-align: -webkit-right;">
+		<h:commandLink>
+			<h:outputText value="Exportar: " />
+			<p:graphicImage library="images" name="excel.png" width="30"
+				style="vertical-align: middle;" />
+			<p:dataExporter type="xls" target="dtbSkillxHora"
+				fileName="skill-x-hora-entrantes-x-atendidas" />
+		</h:commandLink>
+	</center>
+
+	<p:spacer height="10" />
+
+	<p:dataTable styleClass="dataTableHeaderBlue" var="amountBySkill"
+		value="#{ammountBySkillController.amountBySkillList}" paginator="true"
+		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="5,10,15" rows="10" paginatorPosition="bottom"
+		id="dtbSkillxHora" emptyMessage="Has no records"
+		currentPageReportTemplate="( {currentPage} de {totalPages} )">
+
+		<p:column headerText="Intervalo" width="350">
+			<h:outputText value="#{amountBySkill.interval.interval}" />
+		</p:column>
+		<p:column headerText="Skill" width="350">
+			<h:outputText value="#{amountBySkill.skill}" />
+		</p:column>
+		<p:column headerText="Quantidade Entrantes" >
+			<h:outputText value="#{amountBySkill.inAmount}" />
+		</p:column>
+		<p:column headerText="Quantidade Atendidas">
+			<h:outputText value="#{amountBySkill.answeredAmount}" />
+		</p:column>
+
+	</p:dataTable>
+
+</ui:composition>
