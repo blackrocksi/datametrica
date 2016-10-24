@@ -1,1 +1,1 @@
-# Datametrica Git
+# Repositório dos projetos da Datametrica.
